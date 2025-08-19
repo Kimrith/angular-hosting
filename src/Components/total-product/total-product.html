@@ -1,0 +1,75 @@
+<div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-5">
+  <table
+    class="w-full text-left text-gray-500 dark:text-gray-400 text-lg max-sm:text-sm"
+  >
+    <thead
+      class="text-lg max-sm:text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-4 py-2 max-sm:px-2">No.</th>
+        <th scope="col" class="px-4 py-2 max-sm:px-2">Image</th>
+        <th scope="col" class="px-4 py-2 max-sm:px-2">Product</th>
+        <th scope="col" class="px-4 py-2 max-sm:px-2">Price</th>
+        <th scope="col" class="px-4 py-2 max-sm:px-2">Quantity</th>
+        <th scope="col" class="px-4 py-2 max-sm:px-2">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of allProduct; track product) {
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td
+          class="px-4 py-2 max-sm:px-2 font-medium text-gray-900 dark:text-white"
+        >
+          {{ allProduct.indexOf(product) + 1 }}
+        </td>
+        <td class="px-1 py-2 max-sm:px-1">
+          <img
+            [src]="product.imageUrl"
+            class="w-20 max-sm:w-14 rounded object-cover"
+            alt="product"
+          />
+        </td>
+        <td class="px-4 py-2 max-sm:px-2">{{ product.name }}</td>
+
+        <!-- discounted price -->
+        <td class="px-2 py-2 max-sm:px-1">
+          <!-- <span
+            class="text-xs max-sm:text-[10px] text-gray-500 line-through mr-1"
+          >
+            ${{ product.price | number : "1.2-2" }}
+          </span>
+          price after discount -->
+          <span class="text-green-600 font-bold text-base max-sm:text-sm">
+            ${{
+              product.price * (1 - (product.discountPercentage || 0) / 100)
+                | number : "1.2-2"
+            }}
+          </span>
+        </td>
+
+        <!-- QTY -->
+        <td class="px-10 py-2 max-sm:px-3">{{ product.addcart }}</td>
+        <td
+          class="px-6 py-2 max-sm:px-2 text-green-600 font-semibold text-base max-sm:text-sm"
+        >
+          ${{
+            product.price *
+              (1 - (product.discountPercentage || 0) / 100) *
+              product.addcart | number : "1.2-2"
+          }}
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<!-- Button -->
+<div class="flex justify-end max-sm:justify-center mt-5">
+  <button
+    class="bg-blue-600 m-12 hover:bg-blue-700 max-sm:w-[170px] max-sm:h-[50px] text-white text-xl max-sm:text-base font-semibold py-2 px-6 rounded-lg shadow transition"
+    (click)="payNow()"
+  >
+    Total Detail
+  </button>
+</div>

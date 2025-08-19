@@ -1,0 +1,131 @@
+<nav
+  class="bg-white dark:bg-gray-900 fixed w-screen z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+>
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img [src]="logoUrl" class="w-[40px] max-sm:w-[40px]" alt="Logo" />
+      <span
+        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white uppercase"
+        >s-shop</span
+      >
+    </a>
+
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <!-- Mobile menu toggle button -->
+      <button
+        type="button"
+        (click)="toggleMenu()"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-sticky"
+        [attr.aria-expanded]="menuOpen"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navbar menu -->
+    <div
+      id="navbar-sticky"
+      [ngClass]="{
+        hidden: !menuOpen,
+        'flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mt-2':
+          menuOpen,
+        'md:flex md:flex-row md:bg-transparent md:p-0 md:mt-0 md:shadow-none md:rounded-none': true,
+        'w-full md:w-auto': true,
+        'md:order-1': true,
+        'items-start md:items-center': true,
+        'justify-start md:justify-between': true
+      }"
+    >
+      <ul
+        class="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-8 rtl:space-x-reverse font-medium"
+      >
+        <li>
+          <a
+            routerLink="home"
+            routerLinkActive="text-blue-500"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
+            class="block py-2 px-3 md:p-0 text-amber-50 duration-300 ease-in-out"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="about"
+            routerLinkActive="text-blue-500"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
+            class="block py-2 px-3 md:p-0 text-amber-50 duration-300 ease-in-out"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="service"
+            routerLinkActive="text-blue-500"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
+            class="block py-2 px-3 md:p-0 text-amber-50 duration-300 ease-in-out"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="contact"
+            routerLinkActive="text-blue-500"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
+            class="block py-2 px-3 md:p-0 text-amber-50 duration-300 ease-in-out"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- router -->
+<!-- router -->
+<div class="relative w-full h-[300px] sm:h-[500px] md:h-[800px] mt-15">
+  <img
+    src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2023-07/230710-logan-paul-prime-jm-1013-05c9e6.jpg"
+    alt="Prime Hydration"
+    class="w-full h-full object-cover"
+  />
+
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="text-center px-4">
+      <h1
+        class="text-white text-4xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-wide drop-shadow-lg animate-fade-in-up"
+      >
+        PRIME Hydration
+      </h1>
+      <p class="mt-4 text-white/80 text-sm sm:text-lg md:text-xl font-medium">
+        Fuel your body. Refresh your life.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+<router-outlet></router-outlet>
+<!--  -->
+
+<app-footer></app-footer>
