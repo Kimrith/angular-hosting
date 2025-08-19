@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-declare const Swal: any;
+// import { RouterOutlet } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product',

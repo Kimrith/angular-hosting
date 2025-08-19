@@ -1,6 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-declare const Swal: any;
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-total-product',
@@ -64,7 +64,7 @@ export class TotalProduct {
         cancelButton: 'bg-red-500 text-white px-4 py-2 rounded ml-5',
       },
       buttonsStyling: false,
-    }).then((result: { isConfirmed: any }) => {
+    }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire('✅ Payment Successful', 'Thank you for your purchase!', 'success');
       }
